@@ -163,3 +163,99 @@ export const employee1:Employee = {
     salary:33000
 }
 console.log(`${employee1.name} ${employee1.age} ${employee1.salary}`)
+
+
+//Union Types
+let id: number | string;
+
+function printId(id: number | string){
+    if(typeof id === "string"){
+        console.log(`ID is a string: ${id.toUpperCase()}`)
+    }else if(typeof id==="number"){
+        console.log(`ID is a number: ${id.toFixed(2)}`)
+    }
+}
+
+printId("abc");
+
+//Union Type in an Object
+type Shape = {
+    kind: "circle" | "square";
+    radius?: number;
+    sideLength?: number;
+}
+
+function getArea(shape: Shape):number {
+    if(shape.kind==="circle" && shape.radius!==undefined){
+        return Math.PI * shape.radius ** 2
+    }else if(shape.kind==="square" && shape.sideLength!==undefined){
+        return shape.sideLength**2
+    }
+    throw new Error("Invalid shape")
+}
+
+console.log(getArea({kind:"circle", radius:5}))
+console.log(getArea({kind:"square", sideLength: 4}))
+
+
+//Intersection types
+
+
+//exercises
+//Shape Union with Circle and Rectangle
+type Circle = {
+    radius:number
+};
+type Rectangle = {
+    width: number;
+    height: number
+}
+type Shape2 = Circle & Rectangle;
+function getPerimeter(shape:Shape2):number{
+    if(shape.radius!==undefined){
+        return Math.PI*shape.radius**2
+    }else if(shape.width!==undefined && shape.height!==undefined){
+        return shape.height*shape.width
+    }
+    throw new Error("Invalid shape")
+}
+
+//EmployeePerson Intersection
+interface Person2 {
+    name: string,
+    age: number
+}
+interface Job2 {
+    title: string,
+    salary: number
+}
+
+type EmployeePerson = Person2 & Job2;
+const employee2:EmployeePerson = {
+    name:"Donald",
+    age: 77,
+    title: "President",
+    salary: 100000000
+}
+console.log(employee2)
+
+
+//Narrowing Union Types with Type Assertions
+type Animal = {
+    type: "animal",
+    legs: number
+}
+type Plant = {
+    type: "plant",
+    color: string
+}
+type LivingThing = Animal | Plant;
+//Create function describeLivingThing that describes if thing (LinivngThing) is animal, returns: This animal has ... legs, otherwise: This plant is ... color  
+export function describeLivingThing(thing: LivingThing):string {
+    if((thing as Animal).legs !== undefined){
+        return `This animal has ${(thing as Animal).legs} legs`;
+    }else{
+        return `This plant has ${(thing as Plant).color} in color`;
+    }
+}
+console.log(describeLivingThing({type:"animal",legs:4})) 

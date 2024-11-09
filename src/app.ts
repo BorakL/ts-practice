@@ -1,6 +1,6 @@
 import { Car, Person } from "./classes/classes-practice";
 import {Department} from "./classes/department";
-import { add, employee1, getFullName, multiply, multiplyByTwo, welcomeUser } from "./ts-practice2/basics";
+import { add, describeLivingThing, employee1, getFullName, multiply, multiplyByTwo, welcomeUser } from "./ts-practice2/basics";
 
 const accounting = new Department("accounting");
 
@@ -23,5 +23,6 @@ console.log(multiply(3,5))
 console.log(multiplyByTwo(34))
 console.log(getFullName("John"))
 console.log(`${employee1.name} ${employee1.age} ${employee1.salary}`)
+console.log(describeLivingThing({type:"animal",legs:4}))
 
 
