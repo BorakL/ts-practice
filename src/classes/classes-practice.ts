@@ -1,10 +1,12 @@
 export class Person {
     public name: string;
     private age: number;
+    protected nickname: string;
 
-    constructor(name:string, age:number){
+    constructor(name:string, age:number, nickname:string){
         this.name=name;
         this.age=age;
+        this.nickname=nickname
     }
 
     getAge():number{
@@ -35,12 +37,12 @@ export class Car extends Vehicle {
     }
 }
 
-class Employee extends Person {
-    salary: number;
-    constructor(salary:number, name:string, age:number){
-        super(name, age);
-        this.salary = salary
-    }
-}
+// class Employee extends Person {
+//     salary: number;
+//     constructor(salary:number, name:string, age:number){
+//         super(name, age);
+//         this.salary = salary
+//     }
+// }
 
 
