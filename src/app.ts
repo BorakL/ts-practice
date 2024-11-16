@@ -26,10 +26,3 @@ console.log(multiplyByTwo(34))
 console.log(getFullName("John"))
 console.log(`${employee1.name} ${employee1.age} ${employee1.salary}`)
 console.log(describeLivingThing({type:"animal",legs:4}))
-
-
-// const p1 = new Person1("4234","Pera")
-// console.log(p1.getSSN())
-// const manager = new Manager(22333)
-// console.log(manager.getSalary)
-// console.log(Calculator.add(4,5))
