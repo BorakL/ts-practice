@@ -1,3 +1,5 @@
+import { Vehicle } from "../classes/classes-practice";
+
 //exercise 1
 let username:string = "Pera";
 let isLoggedIn:boolean = true;
@@ -99,11 +101,11 @@ interface Car {
     year?: number
 }
 
-const car: Car = {
-    brand: "Mercedes",
-    model: "C",
-    // year: 1999
-}
+// const car: Car = {
+//     brand: "Mercedes",
+//     model: "C",
+//     // year: 1999
+// }
 
 //Interface with Methods
 interface Calculator {
@@ -279,3 +281,43 @@ const e1: ElevatedEmployee = {
     startDate: new Date()
 }
 
+type UnknownEmployee = Admin | Employee2;
+
+//More on type guards
+function printEmployeeInformation(emp: UnknownEmployee){
+    console.log('Name: ', emp.name);
+    if('privileges' in emp){
+        console.log('Privileges: ', emp.privileges)
+    }
+    if('startDate' in emp){
+        console.log('Privileges: ', emp.startDate)
+    }
+}
+
+printEmployeeInformation({name: 'Manu', startDate: new Date()})
+
+class Car {
+    drive(){
+        console.log('Driving...')
+    }
+}
+class Truck {
+    drive(){
+        console.log('Driving a truck...')
+    }
+    loadCargo(amount: number){
+        console.log('Loading cargo...', amount)
+    }
+}
+type Vehicle2 = Car | Truck;
+const v1 = new Car();
+const v2 = new Truck();
+function useVehicle(vehicle: Vehicle2){
+    vehicle.drive();
+    if('loadCargo' in vehicle){
+        vehicle.loadCargo(1000)
+    }
+}
+
+useVehicle(v1);
+useVehicle(v2);
