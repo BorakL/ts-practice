@@ -259,3 +259,23 @@ export function describeLivingThing(thing: LivingThing):string {
     }
 }
 console.log(describeLivingThing({type:"animal",legs:4})) 
+
+//Intersection types
+//Type Admin has two properties name (string) and privileges (array of strings)
+//Type Employee2 has two properties name (string) and startDate (date)
+//Type ElevatedEmployee must be Admin and Employee
+type Admin = {
+    name: string;
+    privileges: string[];
+}
+type Employee2 = {
+    name: string;
+    startDate: Date;
+}
+type ElevatedEmployee = Admin & Employee2;
+const e1: ElevatedEmployee = {
+    name: 'Max',
+    privileges: ['create-server'],
+    startDate: new Date()
+}
+
