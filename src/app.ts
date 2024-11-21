@@ -26,3 +26,6 @@ console.log(multiplyByTwo(34))
 console.log(getFullName("John"))
 console.log(`${employee1.name} ${employee1.age} ${employee1.salary}`)
 console.log(describeLivingThing({type:"animal",legs:4}))
+
+let paragrap = <HTMLElement>document.getElementById("paragraph")!;
+paragrap.innerHTML = "asdf";
